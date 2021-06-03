@@ -1,0 +1,39 @@
+---
+title: "Coastal protection modeling approach"
+output: html_notebook
+---
+
+
+The benefits of a set of protected areas (s) for coastal protection can be defined as the change in the provision of the ecosystem service with and without protection. Analogous to the benefit functions derived for biodiversity and carbon, this protection benefit (P) can be expressed as
+
+$$ 
+P_{s} = \sum_i \sum_j  v_{i,j}^o ( 1- I_{u_{i,j}})I_{a_{i,j}} \times \alpha_{i, j} \space \space \forall \space i \space \text{in} \space s
+$$
+
+where $v_{i,j}^o$ is the current extent of habitat j in pixel i, and  $I_{a_{i,j}}$ and $I_{u{i,j}}$ are the fractions of habitat j in pixel i that would be lost in the absence of protection as a results of impacts we can and cannot abate with MPAs, respectively. $\alpha_{j,i}$ represents the marginal value of a 1km of habitat j in pixel i. 
+
+Our habitats of interest (j) are [seagrass beds](https://data.unep-wcmc.org/datasets/7), [mangrove forests](https://data.unep-wcmc.org/datasets/4) and [coral reefs](https://data.unep-wcmc.org/datasets/1). These are possible sources of data to estimate $v_{i,j}^o$. 
+
+The fraction of habitat loss in the absence of protection can be estimated using the global impact layers of Halpern et al and creating log-transformed relative risk maps for abatable and unabatable impacts with MPAs (see Sala et al). Another impact that could be included is [projected land-use change](https://www.nature.com/articles/s41597-020-00669-x). Recent papers have also looked at global loss of mangrove forest and differentiate between natural and human causes.
+
+Abatable impacts can include: 
+
+  - Fishing
+  - Coastal development
+  - [Deforestation and fragmentation](https://www.nature.com/articles/s41598-020-63880-1.pdf?origin=ppub)
+  - Dredging
+  
+Un-abatable impacts can include:
+
+  - Climate change (sea surface temperature, ocean acidification, sea level rise)
+  - Land-based: nutrient pollution, organic chemical pollution, light
+  - [Habitat loss, natural vs human causes](Habitat loss (https://www.nasa.gov/feature/goddard/2020/nasa-study-maps-the-roots-of-global-mangrove-loss))
+  
+The most challenging part of this model is to estimate the marginal value of a spatial unit of habitat  $\alpha_{j,i}$. Ideally, this would incorporate the magnitude and frequency of storms, the topography of the shoreline, the value of the land nearest to the habitat, and the demographics and vulnerability of coastal communities. In practice, we have 3 options to inform this: 
+
+  1. Meta-analysis: search the literature for estimates of the value ($ per km2) of green infrastructure for different coastal regions around the world. [Research](https://www.tandfonline.com/doi/full/10.1080/08920753.2016.1208882) suggest this is highly variable and context-dependent. 
+  
+  2. Mechanistic process-based model: use a wave energy attentuation [model](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2014JC009821) for sandy and muddy coastlines to model the effects of mangroves, seagreasses, and marshes. For coral reefs, use the approach from [Arkema et al](https://www.pnas.org/content/112/24/7390). The big unknown here is: can we parameterize this models globally in a credible way?
+  
+  3. Vulnerability Index: an alternative approach is to interpret the coefficienct as a vulnerability weight and discard the idea of trying to quantify the benefit in dollar values.The index proposed by [Ruckelshaus et al. 2016](/www.tandfonline.com/doi/full/10.1080/08920753.2016.1208882) incorporates the physical and social vulnerabilities of an area and the nature of the storm hazard to be withstood.
+
